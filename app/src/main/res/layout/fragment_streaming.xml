@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image_background_radio"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_main"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layout_verse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="24dp"
+        android:background="@drawable/background_transparent_eye_tiger"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
+        app:layout_constraintBottom_toTopOf="@id/text_live"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingBottom="8dp"
+            android:text="@string/text_verse"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="@string/text_verse_number"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:id="@+id/text_live"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingBottom="8dp"
+        android:text="@string/text_live"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/player_stream"
+        app:layout_constraintEnd_toEndOf="@id/layout_verse"
+        app:layout_constraintStart_toStartOf="@id/layout_verse"
+        app:layout_constraintTop_toBottomOf="@id/layout_verse" />
+
+    <com.google.android.youtube.player.YouTubeThumbnailView
+        android:id="@+id/player_stream"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toTopOf="@id/button_stream_only_audio"
+        app:layout_constraintDimensionRatio="16:9"
+        app:layout_constraintEnd_toEndOf="@id/layout_verse"
+        app:layout_constraintStart_toStartOf="@id/layout_verse"
+        app:layout_constraintTop_toBottomOf="@id/text_live" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_stream_only_audio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_transparent_eye_tiger"
+        android:drawableStart="@drawable/ic_music_note"
+        android:drawablePadding="8dp"
+        android:drawableTint="@color/white"
+        android:padding="8dp"
+        android:text="@string/button_only_audio"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/button_stream_notify_audience"
+        app:layout_constraintEnd_toEndOf="@id/layout_verse"
+        app:layout_constraintStart_toStartOf="@id/layout_verse"
+        app:layout_constraintTop_toBottomOf="@id/player_stream" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_stream_only_audio_playing"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_transparent_eye_tiger"
+        android:drawableStart="@drawable/ic_stop_circle"
+        android:drawablePadding="8dp"
+        android:drawableTint="@color/white"
+        android:padding="8dp"
+        android:text="@string/button_only_audio_streaming"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/button_stream_notify_audience"
+        app:layout_constraintEnd_toEndOf="@id/layout_verse"
+        app:layout_constraintStart_toStartOf="@id/layout_verse"
+        app:layout_constraintTop_toBottomOf="@id/player_stream" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_stream_notify_audience"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/background_transparent_eye_tiger"
+        android:drawableStart="@drawable/ic_groups"
+        android:drawablePadding="8dp"
+        android:drawableTint="@color/white"
+        android:padding="8dp"
+        android:text="@string/button_notify_audience"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button_stream_request_pray"
+        app:layout_constraintStart_toStartOf="@id/layout_verse"
+        app:layout_constraintTop_toBottomOf="@id/button_stream_only_audio" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_stream_request_pray"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/background_transparent_eye_tiger"
+        android:drawableStart="@drawable/ic_chat"
+        android:drawablePadding="8dp"
+        android:drawableTint="@color/white"
+        android:padding="8dp"
+        android:text="@string/button_request_pray"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/layout_verse"
+        app:layout_constraintStart_toEndOf="@id/button_stream_notify_audience"
+        app:layout_constraintTop_toBottomOf="@id/button_stream_only_audio"
+        app:layout_constraintTop_toTopOf="@id/button_stream_notify_audience" />
+</androidx.constraintlayout.widget.ConstraintLayout>

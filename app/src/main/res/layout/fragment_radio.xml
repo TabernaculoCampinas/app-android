@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image_background_radio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_radio"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layout_verse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="18dp"
+        android:layout_marginVertical="24dp"
+        android:background="@drawable/background_transparent_philippin_bronze"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
+        app:layout_constraintBottom_toTopOf="@id/text_title_web_radio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingBottom="8dp"
+            android:text="@string/text_verse"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="@string/text_verse_number"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:id="@+id/text_title_web_radio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/text_web_radio"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/layout_player_web_radio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_verse"
+        app:layout_constraintVertical_bias="0" />
+
+    <RelativeLayout
+        android:id="@+id/layout_player_web_radio"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/background_play_button"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:focusable="true"
+        android:foreground="@drawable/ripple_white"
+        app:layout_constraintBottom_toTopOf="@id/text_title_daily_reading"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintLeft_toLeftOf="@id/text_title_web_radio"
+        app:layout_constraintRight_toRightOf="@id/text_title_web_radio"
+        app:layout_constraintTop_toBottomOf="@id/text_title_web_radio"
+        app:layout_constraintVertical_bias="0">
+
+        <ImageView
+            android:id="@+id/img_player_web_radio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_margin="4dp"
+            android:contentDescription="@string/text_daily_reading"
+            android:src="@drawable/ic_play"
+            app:tint="@color/white" />
+
+        <ProgressBar
+            android:id="@+id/progress_player_web_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="4dp"
+            android:indeterminate="true"
+            android:indeterminateOnly="true"
+            android:indeterminateTint="@color/white"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/text_title_daily_reading"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/text_daily_reading"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/layout_player_daily_reading"
+        app:layout_constraintEnd_toEndOf="@id/text_title_web_radio"
+        app:layout_constraintStart_toStartOf="@id/text_title_web_radio"
+        app:layout_constraintTop_toBottomOf="@id/layout_player_web_radio"
+        app:layout_constraintVertical_bias="0" />
+
+    <RelativeLayout
+        android:id="@+id/layout_player_daily_reading"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/background_play_button"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:focusable="true"
+        android:foreground="@drawable/ripple_white"
+        app:layout_constraintBottom_toTopOf="@id/layout_daily_reading_playing"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintLeft_toLeftOf="@id/text_title_web_radio"
+        app:layout_constraintRight_toRightOf="@id/text_title_web_radio"
+        app:layout_constraintTop_toBottomOf="@id/text_title_daily_reading"
+        app:layout_constraintVertical_bias="0">
+
+        <ImageView
+            android:id="@+id/img_player_daily_reading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_margin="4dp"
+            android:contentDescription="@string/text_daily_reading"
+            android:src="@drawable/ic_play"
+            app:tint="@color/white" />
+
+        <ProgressBar
+            android:id="@+id/progress_player_daily_reading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="4dp"
+            android:indeterminate="true"
+            android:indeterminateOnly="true"
+            android:indeterminateTint="@color/white"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layout_daily_reading_playing"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/background_transparent_philippin_bronze"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/button_stream_request_pray"
+        app:layout_constraintEnd_toEndOf="@id/layout_verse"
+        app:layout_constraintStart_toStartOf="@id/layout_verse"
+        app:layout_constraintTop_toBottomOf="@id/button_stream_request_pray"
+        app:layout_constraintVertical_bias="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:text="@string/text_web_radio_now_playing"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/text_now_playing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:gravity="center"
+            android:text="@string/text_hymn_playing"
+            android:textColor="@color/white" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_stream_request_pray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/background_transparent_philippin_bronze"
+        android:drawableStart="@drawable/ic_chat"
+        android:drawablePadding="8dp"
+        android:drawableTint="@color/white"
+        android:padding="8dp"
+        android:text="@string/button_request_pray"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/layout_verse"
+        app:layout_constraintStart_toStartOf="@id/layout_verse"
+        app:layout_constraintTop_toBottomOf="@id/layout_daily_reading_playing" />
+</androidx.constraintlayout.widget.ConstraintLayout>
