@@ -8,7 +8,6 @@
         android:id="@+id/image_background_radio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/image_background"
         android:scaleType="centerCrop"
         android:src="@drawable/background_radio"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,7 +27,7 @@
         android:orientation="vertical"
         android:paddingHorizontal="8dp"
         android:paddingVertical="4dp"
-        app:layout_constraintBottom_toTopOf="@id/text_title_web_radio"
+        app:layout_constraintBottom_toTopOf="@id/text_title_daily_reading"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -54,21 +53,21 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <TextView
-        android:id="@+id/text_title_web_radio"
+        android:id="@+id/text_title_daily_reading"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/text_web_radio"
+        android:text="@string/text_daily_reading"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/layout_player_web_radio"
+        app:layout_constraintBottom_toTopOf="@id/layout_player_daily_reading"
         app:layout_constraintEnd_toEndOf="@id/layout_verse"
         app:layout_constraintStart_toStartOf="@id/layout_verse"
         app:layout_constraintTop_toBottomOf="@id/layout_verse"
         app:layout_constraintVertical_bias="0" />
 
     <RelativeLayout
-        android:id="@+id/layout_player_web_radio"
+        android:id="@+id/layout_player_daily_reading"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="100dp"
@@ -82,11 +81,11 @@
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintLeft_toLeftOf="@id/layout_verse"
         app:layout_constraintRight_toRightOf="@id/layout_verse"
-        app:layout_constraintTop_toBottomOf="@id/text_title_web_radio"
+        app:layout_constraintTop_toBottomOf="@id/text_title_daily_reading"
         app:layout_constraintVertical_bias="0">
 
         <ImageView
-            android:id="@+id/img_player_web_radio"
+            android:id="@+id/img_player_daily_reading"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
@@ -96,7 +95,7 @@
             app:tint="@color/white" />
 
         <ProgressBar
-            android:id="@+id/progress_player_web_radio"
+            android:id="@+id/progress_player_daily_reading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -140,5 +139,9 @@
             android:gravity="center"
             android:text="@string/text_hymn_playing"
             android:textColor="@color/white" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

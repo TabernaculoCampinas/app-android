@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">Tabernaculo Campinas</string>
 
+    <string name="image_background">Background</string>
+
     <string name="menu_doctrine">Doutrina</string>
+    <string name="menu_request_pray">Pedido de oração</string>
     <string name="menu_home">Início</string>
+    <string name="menu_daily_reading">Leitura diária</string>
     <string name="menu_hymn">Hinos</string>
 
     <string name="text_web_radio">Web Rádio</string>
@@ -17,9 +21,24 @@
     <string name="text_daily_reading_playing">Reproduzindo Leitura Diária da Bíblia</string>
     <string name="text_hymn_playing">Nossa Oração - Noemi</string>
 
+    <string name="button_save">Salvar</string>
     <string name="button_watch_stream">Acompanhar transmissão</string>
     <string name="button_only_audio">Apenas áudio</string>
     <string name="button_notify_audience">Notificar audiência</string>
     <string name="button_request_pray">Pedido de oração</string>
     <string name="button_only_audio_streaming">Reproduzindo Transmissão - Apenas Áudio</string>
+
+    <string name="name_bold"><b>Nome</b></string>
+    <string name="phone_bold"><b>Telefone</b></string>
+    <string name="email_bold"><b>E-mail</b></string>
+    <string name="state_bold"><b>Estado</b></string>
+    <string name="city_bold"><b>Cidade</b></string>
+    <string name="request_bold"><b>Pedido</b></string>
+
+    <string name="alert_success">Sucesso</string>
+    <string name="alert_error">Erro</string>
+    <string name="alert_warning">Aviso</string>
+    <string name="alert_ok_button">OK</string>
+    <string name="alert_pray_request">Pedido de oração enviado com sucesso!</string>
+    <string name="alert_notify_audience">Notificação de audiência enviada com sucesso!</string>
 </resources>

@@ -1,6 +1,6 @@
 package br.org.tabernaculocampinas.service.tabernacle
 
-import br.org.tabernaculocampinas.model.Streaming
+import br.org.tabernaculocampinas.model.tabernacle.Streaming
 import retrofit2.Call
 import retrofit2.http.GET
 

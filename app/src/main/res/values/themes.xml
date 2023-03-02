@@ -13,4 +13,16 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="EditTextDefalt" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/background_platinum</item>
+        <item name="android:textColorHint">@color/morning_blue</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextViewTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/philippin_bronze</item>
+        <item name="android:textSize">24sp</item>
+    </style>
 </resources>

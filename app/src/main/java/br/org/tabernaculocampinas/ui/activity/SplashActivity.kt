@@ -3,15 +3,13 @@ package br.org.tabernaculocampinas.ui.activity
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.os.PersistableBundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import br.org.tabernaculocampinas.databinding.ActivitySplashBinding
-import br.org.tabernaculocampinas.model.Streaming
+import br.org.tabernaculocampinas.model.tabernacle.Streaming
 import br.org.tabernaculocampinas.service.RetrofitHelper
 import br.org.tabernaculocampinas.service.tabernacle.StreamService
 import com.google.gson.Gson

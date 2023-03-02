@@ -10,6 +10,11 @@ class RetrofitHelper {
 
             return createRetrofitInstance(path)
         }
+        fun createRetrofitInstanceIbge(): Retrofit {
+            val path = "https://servicodados.ibge.gov.br/api/v1/"
+
+            return createRetrofitInstance(path)
+        }
 
         private fun createRetrofitInstance(path: String): Retrofit {
             return Retrofit.Builder()

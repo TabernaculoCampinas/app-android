@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image_background_radio"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/image_background"
+            android:scaleType="centerCrop"
+            android:src="@drawable/background_radio"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_pray_request"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center_horizontal"
+            android:text="@string/menu_request_pray"
+            android:textColor="@color/philippin_bronze"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/edit_pray_request_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0" />
+
+        <EditText
+            android:id="@+id/edit_pray_request_name"
+            style="@style/EditTextDefalt"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="32dp"
+            android:autofillHints="name"
+            android:hint="@string/name_bold"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@id/edit_pray_request_phone"
+            app:layout_constraintEnd_toEndOf="@id/text_pray_request"
+            app:layout_constraintStart_toStartOf="@id/text_pray_request"
+            app:layout_constraintTop_toBottomOf="@id/text_pray_request" />
+
+        <EditText
+            android:id="@+id/edit_pray_request_phone"
+            style="@style/EditTextDefalt"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="32dp"
+            android:autofillHints="name"
+            android:hint="@string/phone_bold"
+            android:imeOptions="actionNext"
+            android:inputType="phone"
+            app:layout_constraintBottom_toTopOf="@id/edit_pray_request_email"
+            app:layout_constraintEnd_toEndOf="@id/text_pray_request"
+            app:layout_constraintStart_toStartOf="@id/text_pray_request"
+            app:layout_constraintTop_toBottomOf="@id/edit_pray_request_name" />
+
+        <EditText
+            android:id="@+id/edit_pray_request_email"
+            style="@style/EditTextDefalt"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="32dp"
+            android:autofillHints="name"
+            android:hint="@string/email_bold"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            app:layout_constraintBottom_toTopOf="@id/edit_pray_request_state"
+            app:layout_constraintEnd_toEndOf="@id/text_pray_request"
+            app:layout_constraintStart_toStartOf="@id/text_pray_request"
+            app:layout_constraintTop_toBottomOf="@id/edit_pray_request_phone" />
+
+        <AutoCompleteTextView
+            android:id="@+id/edit_pray_request_state"
+            style="@style/EditTextDefalt"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="32dp"
+            android:autofillHints="name"
+            android:hint="@string/state_bold"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@id/edit_pray_request_city"
+            app:layout_constraintEnd_toEndOf="@id/text_pray_request"
+            app:layout_constraintStart_toStartOf="@id/text_pray_request"
+            app:layout_constraintTop_toBottomOf="@id/edit_pray_request_email" />
+
+        <AutoCompleteTextView
+            android:id="@+id/edit_pray_request_city"
+            style="@style/EditTextDefalt"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="32dp"
+            android:autofillHints="name"
+            android:hint="@string/city_bold"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@id/edit_pray_request"
+            app:layout_constraintEnd_toEndOf="@id/text_pray_request"
+            app:layout_constraintStart_toStartOf="@id/text_pray_request"
+            app:layout_constraintTop_toBottomOf="@id/edit_pray_request_state" />
+
+        <EditText
+            android:id="@+id/edit_pray_request"
+            style="@style/EditTextDefalt"
+            android:layout_width="0dp"
+            android:layout_height="96dp"
+            android:layout_marginTop="32dp"
+            android:autofillHints="name"
+            android:hint="@string/request_bold"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@id/button_save_client"
+            app:layout_constraintEnd_toEndOf="@id/text_pray_request"
+            app:layout_constraintStart_toStartOf="@id/text_pray_request"
+            app:layout_constraintTop_toBottomOf="@id/edit_pray_request_city" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_save_client"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/background_transparent_philippin_bronze"
+            android:text="@string/button_save"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/text_pray_request"
+            app:layout_constraintStart_toStartOf="@id/text_pray_request"
+            app:layout_constraintTop_toBottomOf="@id/edit_pray_request" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_save_client"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:indeterminate="true"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/text_pray_request"
+            app:layout_constraintStart_toStartOf="@id/text_pray_request"
+            app:layout_constraintTop_toBottomOf="@id/edit_pray_request" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

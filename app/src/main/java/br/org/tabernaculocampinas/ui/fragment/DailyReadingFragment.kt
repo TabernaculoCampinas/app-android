@@ -5,18 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import br.org.tabernaculocampinas.databinding.FragmentDailyReadingBinding
 import br.org.tabernaculocampinas.databinding.FragmentRadioBinding
 import br.org.tabernaculocampinas.ui.bottomsheet.BottomSheetWebRadio
 
-class RadioFragment : Fragment() {
-    private lateinit var binding: FragmentRadioBinding
+class DailyReadingFragment : Fragment() {
+    private lateinit var binding: FragmentDailyReadingBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentRadioBinding.inflate(layoutInflater)
+        binding = FragmentDailyReadingBinding.inflate(layoutInflater)
 
         return binding.root
     }
@@ -25,7 +26,7 @@ class RadioFragment : Fragment() {
         super.onResume()
 
         loadInformations()
-        configureWebRadioButton()
+        configureDailyReadingButton()
     }
 
     private fun loadInformations() {
@@ -34,10 +35,10 @@ class RadioFragment : Fragment() {
         }
     }
 
-    private fun configureWebRadioButton() {
+    private fun configureDailyReadingButton() {
         with(binding) {
-            layoutPlayerWebRadio.setOnClickListener {
-                //layoutNowPlaying.visibility = View.VISIBLE
+            layoutPlayerDailyReading.setOnClickListener {
+                //layoutDailyReadingPlaying.visibility = View.VISIBLE
             }
         }
     }

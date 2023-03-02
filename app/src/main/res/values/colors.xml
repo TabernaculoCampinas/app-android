@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="tiger_eye">#FFdd9933</color>
-    <color name="teste">#DABA8B</color>
     <color name="philippin_bronze">#FF6d2a0c</color>
     <color name="black">#FF000000</color>
     <color name="sonic_silver">#FF777777</color>
+    <color name="morning_blue">#FF97A4A1</color>
     <color name="quick_silver">#FFA3A3A3</color>
+    <color name="platinum">#FFE5E5E5</color>
     <color name="white">#FFFFFFFF</color>
 
     <color name="transparent_philippin_bronze">#BB6d2a0c</color>

@@ -8,6 +8,7 @@
         android:id="@+id/image_background_radio"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:contentDescription="@string/image_background"
         android:scaleType="centerCrop"
         android:src="@drawable/background_main"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -97,7 +98,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_stream_only_audio_playing"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/background_transparent_eye_tiger"
         android:drawableStart="@drawable/ic_stop_circle"
@@ -115,9 +116,8 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_stream_notify_audience"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:background="@drawable/background_transparent_eye_tiger"
         android:drawableStart="@drawable/ic_groups"
         android:drawablePadding="8dp"
@@ -127,25 +127,7 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/button_stream_request_pray"
+        app:layout_constraintEnd_toEndOf="@id/layout_verse"
         app:layout_constraintStart_toStartOf="@id/layout_verse"
         app:layout_constraintTop_toBottomOf="@id/button_stream_only_audio" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_stream_request_pray"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:background="@drawable/background_transparent_eye_tiger"
-        android:drawableStart="@drawable/ic_chat"
-        android:drawablePadding="8dp"
-        android:drawableTint="@color/white"
-        android:padding="8dp"
-        android:text="@string/button_request_pray"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@id/layout_verse"
-        app:layout_constraintStart_toEndOf="@id/button_stream_notify_audience"
-        app:layout_constraintTop_toBottomOf="@id/button_stream_only_audio"
-        app:layout_constraintTop_toTopOf="@id/button_stream_notify_audience" />
 </androidx.constraintlayout.widget.ConstraintLayout>

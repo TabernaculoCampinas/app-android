@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import br.org.tabernaculocampinas.R
 import br.org.tabernaculocampinas.databinding.ActivityMainBinding
-import br.org.tabernaculocampinas.model.Streaming
+import br.org.tabernaculocampinas.model.tabernacle.Streaming
 import br.org.tabernaculocampinas.ui.fragment.adapter.TabHomeAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -46,8 +46,17 @@ class MainActivity : AppCompatActivity() {
                         ContextCompat.getDrawable(this@MainActivity, R.drawable.ic_book)
                     1 ->
                         tab.icon =
-                            ContextCompat.getDrawable(this@MainActivity, R.drawable.ic_home)
-                    2 -> tab.icon =
+                            ContextCompat.getDrawable(this@MainActivity, R.drawable.ic_chat)
+                    2 ->
+                        tab.icon =
+                            ContextCompat.getDrawable(
+                                this@MainActivity,
+                                R.drawable.ic_ondemand_video
+                            )
+                    3 ->
+                        tab.icon =
+                            ContextCompat.getDrawable(this@MainActivity, R.drawable.ic_menu_book)
+                    4 -> tab.icon =
                         ContextCompat.getDrawable(this@MainActivity, R.drawable.ic_library_music)
                 }
             }.attach()
@@ -66,7 +75,7 @@ class MainActivity : AppCompatActivity() {
                 }
             })
 
-            tabLayoutMain.getTabAt(1)?.select()
+            tabLayoutMain.getTabAt(2)?.select()
         }
     }
 }
