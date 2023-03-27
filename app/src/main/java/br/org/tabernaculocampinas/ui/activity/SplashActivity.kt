@@ -41,9 +41,7 @@ class SplashActivity : AppCompatActivity() {
                 Toast.makeText(baseContext, t.message, Toast.LENGTH_SHORT).show()
             }
 
-            override fun onResponse(
-                call: Call<Streaming>, response: Response<Streaming>
-            ) {
+            override fun onResponse(call: Call<Streaming>, response: Response<Streaming>) {
                 if (response.isSuccessful) {
                     val sharedPreference =
                         baseContext.getSharedPreferences(

@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -29,6 +31,12 @@
         <activity
             android:name="br.org.tabernaculocampinas.ui.activity.MainActivity"
             android:exported="true" />
+
+        <service
+            android:name=".ui.service.WebRadioService"
+            android:foregroundServiceType="mediaPlayback"
+            android:exported="true"
+            android:enabled="true"/>
     </application>
 
 </manifest>

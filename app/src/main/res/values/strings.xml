@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Tabernaculo Campinas</string>
 
+    <string name="notification_channel_id">br.org.tabernaculocampinas.notificacao</string>
+    <string name="radio_notification_channel_id">br.org.tabernaculocampinas.radio</string>
+
     <string name="image_background">Background</string>
 
     <string name="menu_doctrine">Doutrina</string>

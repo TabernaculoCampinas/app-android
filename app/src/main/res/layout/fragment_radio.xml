@@ -10,29 +10,27 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/image_background"
         android:scaleType="centerCrop"
-        android:src="@drawable/background_radio"
+        android:src="@drawable/background_radio_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/layout_verse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="18dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="36dp"
         android:background="@drawable/background_transparent_philippin_bronze"
         android:elevation="4dp"
         android:orientation="vertical"
         android:paddingHorizontal="8dp"
         android:paddingVertical="4dp"
-        app:layout_constraintBottom_toTopOf="@id/text_title_web_radio"
+        app:layout_constraintBottom_toTopOf="@id/layout_verse"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
@@ -78,7 +76,7 @@
         android:elevation="4dp"
         android:focusable="true"
         android:foreground="@drawable/ripple_white"
-        app:layout_constraintBottom_toTopOf="@id/layout_daily_reading_playing"
+        app:layout_constraintBottom_toTopOf="@id/layout_web_radio_playing"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintLeft_toLeftOf="@id/layout_verse"
         app:layout_constraintRight_toRightOf="@id/layout_verse"
@@ -108,25 +106,25 @@
     </RelativeLayout>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/layout_daily_reading_playing"
+        android:id="@+id/layout_web_radio_playing"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginVertical="36dp"
         android:background="@drawable/background_transparent_philippin_bronze"
         android:elevation="4dp"
         android:orientation="vertical"
         android:padding="8dp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/layout_verse"
         app:layout_constraintStart_toStartOf="@id/layout_verse"
-        app:layout_constraintTop_toBottomOf="@id/layout_daily_reading_playing"
+        app:layout_constraintTop_toBottomOf="@id/layout_web_radio_playing"
         app:layout_constraintVertical_bias="1">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginVertical="4dp"
             android:text="@string/text_web_radio_now_playing"
             android:textColor="@color/white"
@@ -139,6 +137,7 @@
             android:layout_marginVertical="4dp"
             android:gravity="center"
             android:text="@string/text_hymn_playing"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:visibility="gone" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

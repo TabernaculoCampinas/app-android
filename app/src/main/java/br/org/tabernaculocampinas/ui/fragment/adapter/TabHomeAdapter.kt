@@ -26,5 +26,8 @@ class TabHomeAdapter(fragment: FragmentActivity, live: Boolean) : FragmentStateA
             StreamingFragment()
         else
             RadioFragment()
+
+        //return StreamingFragment()
+        //return RadioFragment()
     }
 }
