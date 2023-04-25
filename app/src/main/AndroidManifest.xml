@@ -36,6 +36,12 @@
             android:name=".ui.service.WebRadioService"
             android:foregroundServiceType="mediaPlayback"
             android:exported="true"
+            android:enabled="true" />
+
+        <service
+            android:name=".ui.service.DailyReadingService"
+            android:foregroundServiceType="mediaPlayback"
+            android:exported="true"
             android:enabled="true"/>
     </application>
 

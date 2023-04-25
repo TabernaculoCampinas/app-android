@@ -22,11 +22,11 @@ import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 
-class WebRadioService : Service() {
+class DailyReadingService : Service() {
     private val notificationId = 11
 
     var mediaPlayer: ExoPlayer? = null
-    var radioUrl: String = ""
+    var dailyReadingUrl: String = ""
 
     var notificationBuilder: NotificationCompat.Builder? = null
     private var notificationManager: NotificationManager? = null
@@ -35,22 +35,22 @@ class WebRadioService : Service() {
     var mediaSessionCompat: MediaSessionCompat? = null
 
     companion object {
-        fun startRadioService(context: Context, radioUrl: String) {
-            val intent = Intent(context, WebRadioService::class.java)
-            intent.action = Constants.actionPlayRadio
+        fun startDailyReadingService(context: Context, dailyReadingFile: String) {
+            val intent = Intent(context, DailyReadingService::class.java)
+            intent.action = Constants.actionPlayDailyReading
 
             val sharedPreference =
                 context.getSharedPreferences("TABERNACULO_CAMPINAS", Context.MODE_PRIVATE)
 
             val editor = sharedPreference?.edit()
-            editor?.putString("radio_url", radioUrl)
+            editor?.putString("daily_reading_file", dailyReadingFile)
             editor?.apply()
 
             context.startService(intent)
         }
 
-        fun stopRadioService(context: Context) {
-            val intent = Intent(context, WebRadioService::class.java)
+        fun stopDailyReadingService(context: Context) {
+            val intent = Intent(context, DailyReadingService::class.java)
 
             context.stopService(intent)
         }
@@ -74,17 +74,17 @@ class WebRadioService : Service() {
         super.onDestroy()
 
         if (mediaPlayer != null) {
-            stopRadio()
+            stopPlayer()
             mediaPlayer!!.release()
         }
     }
 
-    fun startRadio() {
+    fun playPlayer() {
         if (mediaPlayer == null) {
             val sharedPreference =
                 baseContext.getSharedPreferences("TABERNACULO_CAMPINAS", Context.MODE_PRIVATE)
 
-            radioUrl = sharedPreference!!.getString("radio_url", "")!!
+            dailyReadingUrl = sharedPreference!!.getString("daily_reading_file", "")!!
 
             mediaPlayer = ExoPlayer.Builder(this).build()
         }
@@ -95,7 +95,7 @@ class WebRadioService : Service() {
         if (notificationBuilder == null || notificationManager == null)
             loadNotification()
 
-        if (mediaPlayer!!.playbackState != PlaybackStats.PLAYBACK_STATE_PLAYING) {
+        if (mediaPlayer!!.playbackState != PlaybackStats.PLAYBACK_STATE_PLAYING){
             mediaPlayer!!.playWhenReady = true
             mediaPlayer!!.setMediaSource(buildMediaSource())
             mediaPlayer!!.prepare()
@@ -104,7 +104,17 @@ class WebRadioService : Service() {
         configureNotification(PlaybackStats.PLAYBACK_STATE_PLAYING)
     }
 
-    fun stopRadio() {
+    fun pausePlayer() {
+        if (mediaPlayer == null)
+            return
+
+        if (mediaPlayer!!.playbackState != PlaybackStats.PLAYBACK_STATE_STOPPED)
+            mediaPlayer!!.pause()
+
+        stopService()
+    }
+
+    fun stopPlayer() {
         if (mediaPlayer == null)
             return
 
@@ -112,6 +122,13 @@ class WebRadioService : Service() {
             mediaPlayer!!.stop()
 
         stopService()
+    }
+
+    private fun buildMediaSource(): MediaSource {
+        val dataSourceFactory: DataSource.Factory = DefaultHttpDataSource.Factory()
+
+        return ProgressiveMediaSource.Factory(dataSourceFactory)
+            .createMediaSource(MediaItem.fromUri(dailyReadingUrl))
     }
 
     private fun loadMediaSession() {
@@ -127,12 +144,13 @@ class WebRadioService : Service() {
 
         mediaSessionCompat!!.isActive = true
         mediaSessionCompat!!.setSessionActivity(pendingIntent)
-        mediaSessionCompat!!.setCallback(WebRadioCallback(this))
+        mediaSessionCompat!!.setCallback(DailyReadingCallback(this))
     }
 
     private fun loadNotification() {
         notificationBuilder = NotificationCompat.Builder(
-            this, resources.getString(R.string.radio_notification_channel_id)
+            this,
+            resources.getString(R.string.radio_notification_channel_id)
         )
             .setShowWhen(false)
             .setStyle(
@@ -142,7 +160,7 @@ class WebRadioService : Service() {
             )
             .setColor(getColor(R.color.white))
             .setSmallIcon(R.drawable.app_logo)
-            .setContentText("Web Rádio")
+            .setContentText("Leitura Diária da Bíblia")
             .setContentTitle("Tabernáculo Campinas")
             .setCategory(NotificationCompat.CATEGORY_SERVICE)
 
@@ -165,16 +183,18 @@ class WebRadioService : Service() {
 
                 startForeground(notificationId, notificationBuilder!!.build())
 
-                sendBroadcast(Intent(Constants.actionPlayingRadio))
+
+                val intent = Intent(Constants.actionPlayingDailyReading)
+                intent.putExtra("total_time", mediaPlayer!!.duration)
+
+                sendBroadcast(intent)
             }
             PlaybackStats.PLAYBACK_STATE_STOPPED -> {
                 notificationBuilder!!.addAction(
                     R.drawable.ic_play, "Iniciar", actionPlayback(0)
                 )
 
-                notificationManager!!.notify(notificationId, notificationBuilder!!.build())
-
-                sendBroadcast(Intent(Constants.actionStopRadio))
+                sendBroadcast(Intent(Constants.actionStopDailyReading))
             }
         }
     }
@@ -185,18 +205,18 @@ class WebRadioService : Service() {
     }
 
     private fun actionPlayback(actionNumber: Int): PendingIntent? {
-        val intent = Intent(this, WebRadioService::class.java)
+        val intent = Intent(this, DailyReadingService::class.java)
 
         when (actionNumber) {
             0 -> {
-                intent.action = Constants.actionPlayRadio
+                intent.action = Constants.actionPlayDailyReading
 
                 return PendingIntent.getService(
                     this, actionNumber, intent, PendingIntent.FLAG_IMMUTABLE
                 )
             }
             1 -> {
-                intent.action = Constants.actionStopRadio
+                intent.action = Constants.actionStopDailyReading
 
                 return PendingIntent.getService(
                     this, actionNumber, intent, PendingIntent.FLAG_IMMUTABLE
@@ -207,39 +227,41 @@ class WebRadioService : Service() {
         return null
     }
 
-    private fun buildMediaSource(): MediaSource {
-        val dataSourceFactory: DataSource.Factory = DefaultHttpDataSource.Factory()
-
-        return ProgressiveMediaSource.Factory(dataSourceFactory)
-            .createMediaSource(MediaItem.fromUri(radioUrl))
-    }
-
     private fun treatIntentions(intent: Intent) {
         if (intent.action.isNullOrEmpty())
             return
 
         val actionString = intent.action
 
-        if (actionString.equals(Constants.actionPlayRadio))
-            startRadio()
+        if (actionString.equals(Constants.actionPlayDailyReading))
+            playPlayer()
 
-        if (actionString.equals(Constants.actionStopRadio))
-            stopRadio()
+        if (actionString.equals(Constants.actionStopDailyReading))
+            stopPlayer()
+
+        if (actionString.equals(Constants.actionStopDailyReading))
+            stopPlayer()
     }
 }
 
-class WebRadioCallback(private val webRadioService: WebRadioService) :
+class DailyReadingCallback(private val dailyReadingService: DailyReadingService) :
     MediaSessionCompat.Callback() {
 
     override fun onPlay() {
         super.onPlay()
 
-        webRadioService.startRadio()
+        dailyReadingService.playPlayer()
     }
 
     override fun onStop() {
         super.onStop()
 
-        webRadioService.stopRadio()
+        dailyReadingService.stopPlayer()
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        dailyReadingService.pausePlayer()
     }
 }

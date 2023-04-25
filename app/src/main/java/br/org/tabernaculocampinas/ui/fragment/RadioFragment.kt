@@ -10,9 +10,10 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import br.org.tabernaculocampinas.R
-import br.org.tabernaculocampinas.broadcastreceiver.ActionPlayingRadioFragmentReceiver
-import br.org.tabernaculocampinas.broadcastreceiver.ActionStopRadioFragmentReceiver
+import br.org.tabernaculocampinas.broadcastreceiver.PlayingRadioFragmentReceiver
+import br.org.tabernaculocampinas.broadcastreceiver.StopRadioFragmentReceiver
 import br.org.tabernaculocampinas.databinding.FragmentRadioBinding
+import br.org.tabernaculocampinas.extension.Constants
 import br.org.tabernaculocampinas.model.tabernacle.Streaming
 import br.org.tabernaculocampinas.ui.service.WebRadioService
 import com.google.gson.Gson
@@ -72,13 +73,13 @@ class RadioFragment : Fragment() {
 
     private fun registerBroadcastReceivers() {
         requireContext().registerReceiver(
-            ActionStopRadioFragmentReceiver(this),
-            IntentFilter(br.org.tabernaculocampinas.extension.Constants.actionStopRadio)
+            StopRadioFragmentReceiver(this),
+            IntentFilter(Constants.actionStopRadio)
         )
 
         requireContext().registerReceiver(
-            ActionPlayingRadioFragmentReceiver(this),
-            IntentFilter(br.org.tabernaculocampinas.extension.Constants.actionPlayingRadio)
+            PlayingRadioFragmentReceiver(this),
+            IntentFilter(Constants.actionPlayingRadio)
         )
     }
 

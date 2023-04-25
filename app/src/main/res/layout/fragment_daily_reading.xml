@@ -115,7 +115,7 @@
         android:elevation="4dp"
         android:orientation="vertical"
         android:padding="8dp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/layout_verse"
         app:layout_constraintStart_toStartOf="@id/layout_verse"
@@ -140,6 +140,7 @@
             android:textColor="@color/white" />
 
         <SeekBar
+            android:id="@+id/seek_daily_reading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </androidx.appcompat.widget.LinearLayoutCompat>
