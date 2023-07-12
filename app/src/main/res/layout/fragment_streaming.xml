@@ -69,6 +69,17 @@
         app:layout_constraintTop_toBottomOf="@id/layout_verse"
         app:layout_constraintVertical_bias="0" />
 
+    <ImageView
+        android:id="@+id/image_player_stream"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toTopOf="@id/button_stream_only_audio"
+        app:layout_constraintDimensionRatio="16:9"
+        app:layout_constraintEnd_toEndOf="@id/layout_verse"
+        app:layout_constraintStart_toStartOf="@id/layout_verse"
+        app:layout_constraintTop_toBottomOf="@id/text_live" />
+
     <com.google.android.youtube.player.YouTubeThumbnailView
         android:id="@+id/player_stream"
         android:layout_width="0dp"
@@ -97,7 +108,7 @@
         app:layout_constraintBottom_toTopOf="@id/button_stream_notify_audience"
         app:layout_constraintEnd_toEndOf="@id/layout_verse"
         app:layout_constraintStart_toStartOf="@id/layout_verse"
-        app:layout_constraintTop_toBottomOf="@id/player_stream" />
+        app:layout_constraintTop_toBottomOf="@id/image_player_stream" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_stream_only_audio_playing"

@@ -14,6 +14,7 @@ import br.org.tabernaculocampinas.extension.Constants
 import br.org.tabernaculocampinas.extension.LocalBinder
 import br.org.tabernaculocampinas.ui.activity.MainActivity
 import br.org.tabernaculocampinas.ui.extension.NotificationExtension
+import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.analytics.PlaybackStats
@@ -95,10 +96,21 @@ class DailyReadingService : Service() {
         if (notificationBuilder == null || notificationManager == null)
             loadNotification()
 
-        if (mediaPlayer!!.playbackState != PlaybackStats.PLAYBACK_STATE_PLAYING){
+        if (mediaPlayer!!.playbackState != PlaybackStats.PLAYBACK_STATE_PLAYING) {
             mediaPlayer!!.playWhenReady = true
             mediaPlayer!!.setMediaSource(buildMediaSource())
             mediaPlayer!!.prepare()
+
+            mediaPlayer!!.addListener(object : Player.Listener {
+                override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
+                    if (playbackState == Player.STATE_READY && playWhenReady) {
+                        val intent = Intent(Constants.actionPlayingDailyReading)
+                        intent.putExtra("total_time", mediaPlayer!!.duration)
+
+                        sendBroadcast(intent)
+                    }
+                }
+            })
         }
 
         configureNotification(PlaybackStats.PLAYBACK_STATE_PLAYING)
@@ -183,12 +195,9 @@ class DailyReadingService : Service() {
 
                 startForeground(notificationId, notificationBuilder!!.build())
 
-
-                val intent = Intent(Constants.actionPlayingDailyReading)
-                intent.putExtra("total_time", mediaPlayer!!.duration)
-
-                sendBroadcast(intent)
+                sendBroadcast(Intent(Constants.actionLoadingDailyReading))
             }
+
             PlaybackStats.PLAYBACK_STATE_STOPPED -> {
                 notificationBuilder!!.addAction(
                     R.drawable.ic_play, "Iniciar", actionPlayback(0)
@@ -215,6 +224,7 @@ class DailyReadingService : Service() {
                     this, actionNumber, intent, PendingIntent.FLAG_IMMUTABLE
                 )
             }
+
             1 -> {
                 intent.action = Constants.actionStopDailyReading
 

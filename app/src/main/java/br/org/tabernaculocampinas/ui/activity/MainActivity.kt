@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                 }
             })
 
-            tabLayoutMain.getTabAt(2)?.select()
+            viewPagerMain.setCurrentItem(2, false)
         }
     }
 }

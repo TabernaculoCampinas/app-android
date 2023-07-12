@@ -8,6 +8,7 @@ class Constants {
 
         val actionPlayDailyReading: String = "br.org.tabernaculocampinas.servicedailyreading.actionplay"
         val actionPlayingDailyReading: String = "br.org.tabernaculocampinas.servicedailyreading.actionplaying"
+        val actionLoadingDailyReading: String = "br.org.tabernaculocampinas.servicedailyreading.actionloading"
         val actionStopDailyReading: String = "br.org.tabernaculocampinas.servicedailyreading.actionstop"
         val actionPauseDailyReading: String = "br.org.tabernaculocampinas.servicedailyreading.actionpause"
         val ActionTempoAtualHino: String = "br.org.tabernaculocampinas.servicedailyreading.actiontempoatual";

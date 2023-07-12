@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import br.org.tabernaculocampinas.R
+import br.org.tabernaculocampinas.broadcastreceiver.LoadingDailyReadingFragmentReceiver
 import br.org.tabernaculocampinas.broadcastreceiver.PauseDailyReadingFragmentReceiver
 import br.org.tabernaculocampinas.broadcastreceiver.PlayDailyReadingFragmentReceiver
 import br.org.tabernaculocampinas.databinding.FragmentDailyReadingBinding
@@ -65,8 +66,6 @@ class DailyReadingFragment : Fragment() {
                         Streaming::class.java
                     )
 
-                    changeRadioPlayingControls()
-
                     DailyReadingService.startDailyReadingService(
                         requireContext(),
                         streaming.dailyReadingFile
@@ -97,7 +96,12 @@ class DailyReadingFragment : Fragment() {
     private fun registerBroadcastReceivers() {
         requireContext().registerReceiver(
             PlayDailyReadingFragmentReceiver(this),
-            IntentFilter(Constants.actionPlayDailyReading)
+            IntentFilter(Constants.actionPlayingDailyReading)
+        )
+
+        requireContext().registerReceiver(
+            LoadingDailyReadingFragmentReceiver(this),
+            IntentFilter(Constants.actionLoadingDailyReading)
         )
 
         requireContext().registerReceiver(
@@ -111,7 +115,19 @@ class DailyReadingFragment : Fragment() {
 
         with(binding) {
             imgPlayerDailyReading.setImageResource(R.drawable.ic_play)
+            imgPlayerDailyReading.visibility = View.VISIBLE
             layoutDailyReadingPlaying.visibility = View.INVISIBLE
+            progressPlayerDailyReading.visibility = View.INVISIBLE
+        }
+    }
+
+    fun changeRadioLoadingControls() {
+        playingDailyReading = false
+
+        with(binding) {
+            imgPlayerDailyReading.visibility = View.INVISIBLE
+            layoutDailyReadingPlaying.visibility = View.INVISIBLE
+            progressPlayerDailyReading.visibility = View.VISIBLE
         }
     }
 
@@ -120,7 +136,9 @@ class DailyReadingFragment : Fragment() {
 
         with(binding) {
             imgPlayerDailyReading.setImageResource(R.drawable.ic_pause)
+            imgPlayerDailyReading.visibility = View.VISIBLE
             layoutDailyReadingPlaying.visibility = View.VISIBLE
+            progressPlayerDailyReading.visibility = View.INVISIBLE
         }
     }
 }

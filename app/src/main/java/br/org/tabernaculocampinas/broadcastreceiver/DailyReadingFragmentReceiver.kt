@@ -17,6 +17,13 @@ class PlayDailyReadingFragmentReceiver(private val dailyReadingFragment: DailyRe
     }
 }
 
+class LoadingDailyReadingFragmentReceiver(private val dailyReadingFragment: DailyReadingFragment) :
+    BroadcastReceiver() {
+    override fun onReceive(context: Context?, intent: Intent?) {
+        dailyReadingFragment.changeRadioLoadingControls()
+    }
+}
+
 class PauseDailyReadingFragmentReceiver(private val dailyReadingFragment: DailyReadingFragment) :
     BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
